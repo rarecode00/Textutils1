@@ -9,29 +9,37 @@ export default function Textform(props) {
         console.log("Clicked");
         let newText = text.toUpperCase()
         setText(newText);
-        props.showAlert("Text has been converted into Uppercase" , "success")
+        text.length === 0 ? props.showAlert("Write something to convert" , "warning") : props.showAlert("Text has been converted into Uppercase" , "success")
     }
 
     const handleLow = () =>{
         console.log("Clicked");
         let newText = text.toLowerCase()
         setText(newText);
-        props.showAlert("Text has been converted into Lowercase" , "success")
+        text.length === 0 ? props.showAlert("Write something to convert" , "warning") : props.showAlert("Text has been converted into Uppercase" , "success")
     }
 
     const handleSpaces = () =>{
         // setText(text.trim());
           let newText = text.replace(/\s+/g, ' ').trim();
           setText(newText);
+          props.showAlert("Extra Spaces has been removed" , "success")          
     }
 
     const handleClear = () =>{
         setText("");
+        props.showAlert("Text has been cleared" , "success")
     }
 
     const handleText = (event) =>{
         setText(event.target.value);
     }   
+
+    const handleCopy = () =>{
+        navigator.clipboard.writeText(text)
+        text.length === 0 ? props.showAlert("Nothing here to be copied !" , "warning") : props.showAlert("Text has been copied to clipboard" , "success")
+
+    }
 
     let colorTheme = "primary";
     // let 
@@ -54,7 +62,7 @@ export default function Textform(props) {
         <button className={`btn btn-${colorTheme} mx-1`} onClick={handleUp}>Convert to Uppercase</button>
         <button className={`btn btn-${colorTheme} mx-1`} onClick={handleLow}>Convert to Lowercase</button>
         <button className={`btn btn-${colorTheme} mx-1`} onClick={handleSpaces}>Remove extra spaces</button>
-        <button className={`btn btn-${colorTheme} mx-1`} onClick={() => {navigator.clipboard.writeText(text)}}>Copy text</button>
+        <button className={`btn btn-${colorTheme} mx-1`} onClick={handleCopy}>Copy text</button>
         <button className={`btn btn-${colorTheme} mx-1`} onClick={handleClear}>Clear text</button>
     </div>
     <div className="container my-3" style={{color:props.mode === "white" ? 'black' : 'white'}}>
