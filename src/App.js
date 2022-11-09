@@ -4,12 +4,11 @@ import React from 'react'
 import Textform from './components/Textform';
 import { useState } from 'react'
 import Alerts from './components/Alerts';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from "react-router-dom";
-import About from './components/About';
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Routes
+// } from "react-router-dom";
 
 
 function App() {
@@ -34,14 +33,9 @@ function App() {
 
   return (
      <>
-     <Router>
      <Navbar mode = {mode} toogleMode = {toogleMode}/>
      <Alerts alert = {alert}/>
-     <Routes>
-        <Route path='/' element = {<Textform  showAlert = {showAlert} mode = {mode}  heading = "Enter the text to analyze below"/>}/>
-        <Route path='/about' element = {<About/>} />
-     </Routes>
-     </Router>
+     <Textform  showAlert = {showAlert} mode = {mode}  heading = "Enter the text to analyze below"/>
     </>
   );
 }
