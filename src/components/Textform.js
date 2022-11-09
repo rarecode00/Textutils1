@@ -9,12 +9,14 @@ export default function Textform(props) {
         console.log("Clicked");
         let newText = text.toUpperCase()
         setText(newText);
+        props.showAlert("Text has been converted into Uppercase" , "success")
     }
 
     const handleLow = () =>{
         console.log("Clicked");
         let newText = text.toLowerCase()
         setText(newText);
+        props.showAlert("Text has been converted into Lowercase" , "success")
     }
 
     const handleSpaces = () =>{
